@@ -60,3 +60,4 @@ Array.prototype.merge = function (first, middle, last) {
     }
     return this;
 }
+

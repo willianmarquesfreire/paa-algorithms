@@ -1,3 +1,5 @@
+require('./sort');
+
 let insertionSortArray = [5, 2, 4, 6, 1, 3];
 console.log('The insertionSortArray ', Object.assign([], insertionSortArray), ' was sort in ', insertionSortArray.insertionSort());
 
