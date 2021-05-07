@@ -14,9 +14,6 @@ Array.prototype.insertionSort = function () {
     return this;
 }
 
-// let array = [5, 2, 4, 6, 1, 3];
-// console.log('The array ', Object.assign([], array), ' was sort in ', array.insertionSort());
-
 Array.prototype.mergeSort = function (first, last) {
     if (first === undefined) {
         first = 0;
@@ -63,6 +60,3 @@ Array.prototype.merge = function (first, middle, last) {
     }
     return this;
 }
-
-let array = [2, 4, 5, 7, 1, 2, 3, 6];
-console.log('The array ', Object.assign([], array), ' was sort in ', array.mergeSort());
