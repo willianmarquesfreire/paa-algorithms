@@ -1,22 +1,24 @@
 Array.prototype.logEnabled = true;
 
 Array.prototype.insertionSort = function () {
+    if (this.logEnabled) console.log(`|insertionSort|  --------------------------------- Started ---------------------------------  `)
     for (let j = 1; j < this.length; j++) {
         let key = this[j];
         let i = j - 1;
-        if (this.logEnabled) console.log(`The key value is ${key} from position A[${j}]`)
+        if (this.logEnabled) console.log(`|insertionSort| The key value is ${key} from position A[${j}]`)
         while (i >= 0 && this[i] > key) {
-            if (this.logEnabled) console.log(` - The A[${i + 1}] receive the value ${this[i]} `)
+            if (this.logEnabled) console.log(`|insertionSort|    The A[${i + 1}] receive the value ${this[i]} `)
             this[i + 1] = this[i];
             i--;
         }
-        if (this.logEnabled) console.log(` - Finally the A[${i + 1}] receive the value ${key} `)
+        if (this.logEnabled) console.log(`|insertionSort|     Finally the A[${i + 1}] receive the value ${key} `)
         this[i + 1] = key;
     }
     return this;
 }
 
 Array.prototype.mergeSort = function (first, last) {
+    if (this.logEnabled) console.log(`|mergeSort|  --------------------------------- Started ---------------------------------  `)
     if (first === undefined) {
         first = 0;
         last = this.length - 1;
@@ -34,6 +36,7 @@ Array.prototype.mergeSort = function (first, last) {
 }
 
 Array.prototype.merge = function (first, middle, last) {
+    if (this.logEnabled) console.log(`|merge|  --------------------------------- Started ---------------------------------  `)
     if (this.logEnabled) console.log(`    |merge|          Merge:: First: ${first} Middle: ${middle} Last: ${last}`)
     let n1 = middle - first;
     let n2 = last - middle - 1;
@@ -63,3 +66,22 @@ Array.prototype.merge = function (first, middle, last) {
     return this;
 }
 
+Array.prototype.bubbleSort = function () {
+    if (this.logEnabled) console.log(`|bubbleSort|  --------------------------------- Started ---------------------------------  `)
+    for (let i = 0; i < this.length; i++) {
+        for (let j = this.length - 1; j > i; j--) {
+            if (this[j] < this[j - 1]) {
+                this.swap(j, j - 1)
+            }
+        }
+    }
+    return this;
+}
+
+Array.prototype.swap = function (i, j) {
+    if (this.logEnabled) console.log(`|swap|   The A[${i}] {${this[i]}} was swap with A[${j}] {${this[j]}}`);
+    let temp = this[i];1
+    this[i] = this[j];
+    this[j] = temp;111
+    return this;
+}
