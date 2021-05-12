@@ -1,4 +1,15 @@
-// 2x³ - 6x² + 2x - 1 for x = 3
+function hornerMethod(as, x) {
+    let i = as.length - 1;
+    let y = 0;
+    while (i >= 0) {
+        y = as[i] + (x * y)
+        i--;
+    }
+    return y;
+}
+
+console.log(hornerMethod([-1, 2, -6, 2], 3));
+// 2x³ - 6x + 2x - 1 for x = 3
 
 function horner(poly, x) {
 
