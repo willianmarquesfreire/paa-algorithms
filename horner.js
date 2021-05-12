@@ -1,8 +1,8 @@
-function hornerMethod(as, x) {
-    let i = as.length - 1;
+function hornerMethod(a, x) {
+    let i = a.length - 1;
     let y = 0;
     while (i >= 0) {
-        y = as[i] + (x * y)
+        y = a[i] + (x * y)
         i--;
     }
     return y;
@@ -27,9 +27,9 @@ function horner(poly, x) {
 
 console.log(horner([2, -6, 2, -1], 3))
 
-function recursiveHornerMethod(as, x, y, i) {
-    if (i === undefined) i = as.length - 1
-    if (i >= 0) return as[i] + (x * recursiveHornerMethod(as, x, y, i - 1))
+function recursiveHornerMethod(a, x, y, i) {
+    if (i === undefined) i = a.length - 1
+    if (i >= 0) return a[i] + (x * recursiveHornerMethod(a, x, y, i - 1))
     return 0;
 }
 
