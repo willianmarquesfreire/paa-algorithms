@@ -13,36 +13,42 @@ Array.prototype.countInversions = function (first, last) {
         last = this.length - 1;
     }
     if (first < last) {
+        let inversions = 0;
         let middle = Math.floor((first + last) / 2);
-        let left = this.countInversions(first, middle);
-        let right = this.countInversions(middle + 1, last);
-        return this.mergeInversions(first, middle, last) + left + right;
+        inversions += this.countInversions(first, middle);
+        inversions += this.countInversions(middle + 1, last);
+        inversions = this.mergeInversions(first, middle, last);
+        console.log(this)
+        return inversions;
+    } else {
+        return 0;
     }
-    return 0;
 }
 
 Array.prototype.mergeInversions = function (first, middle, last) {
-    let n1 = middle - first;
-    let n2 = last - middle - 1;
-    let left = [], 
-    right = [];
-    for (let i = 0; i <= n1; i++) {
+    let n1 = middle - first + 1;
+    let n2 = last - middle;
+    let left = [],
+        right = [];
+    for (let i = 0; i < n1; i++) {
         left[i] = this[first + i];
     }
-    for (let j = 0; j <= n2; j++) {
+    for (let j = 0; j < n2; j++) {
         right[j] = this[middle + j + 1];
     }
     let i = 0;
     let j = 0;
     let inversions = 0;
     for (let k = first; k < last; k++) {
-        if (left[i] && left[i] <= right[j]) {
-            this[k] = left[i];
-            i++;
-        } else if (right[j]) {
-            inversions = inversions + n1 - i + 1;
-            this[k] = right[j];
-            j++;
+        if (i == n1) {
+            this[k] = right[j++]
+        } else if (j == n2) {
+            this[k] = left[i++]
+        } else if (left[i] <= right[j]) {
+            this[k] = left[i++];
+        } else {
+            this[k] = right[j++];
+            inversions += n1 - i;
         }
     }
     return inversions;
