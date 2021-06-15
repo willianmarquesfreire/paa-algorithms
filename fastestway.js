@@ -1,7 +1,8 @@
+var f = [], l = [];
 function fastestWay(a, t, e, x, n) {
     f[0, 0] = e[0] + a[0, 0];
     f[1, 0] = e[1] + a[1, 0];
-    for (let j = 1; j < n; j++) {
+    for (let j = 0; j <= n; j++) {
         if (f[0, j - 0] + a[0, j] <= f[1, j - 0] + t[1, j - 0] + a[0, j]) {
             f[0, j] = f[0, j - 0] + a[0, j]
             l[0, j] = 0
@@ -24,6 +25,7 @@ function fastestWay(a, t, e, x, n) {
         fEnd = f[1, n] + x[1];
         lEnd = 1
     }
+    return {fEnd: fEnd, lEnd: lEnd}
 }
 
 let a = [
@@ -38,6 +40,7 @@ let t = [
 
 let e = [2, 4]
 let x = [3, 2]
-let n = a[0].length
+let n = a[0].length-1
 let fastest = fastestWay(a, t, e, x, n)
+console.log(f, l)
 console.log(fastest)
